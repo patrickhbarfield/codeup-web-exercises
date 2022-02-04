@@ -1,0 +1,9 @@
+var littleMermaid = 3days; 
+var brotherBear = 
+
+if (
+	password.length >= 5 &&
+	password.indexOf(username) === -1 &&
+	username.length <= 20
+) 
+
