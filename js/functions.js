@@ -1,9 +1,11 @@
 "use strict";
 
-function sayHello(name);
-    return "Hello, " + name + "!"
+function sayHello(name) {
 
-sayHello("codeup")
+    return "Hello, " + name + "!";
+}
+
+sayHello("codeup");
 console.log(sayHello());
 
 
@@ -63,15 +65,24 @@ var random = Math.floor((Math.random() * 3) + 1);
  */
 
 function isTwo(num) {
-        if(num === 2) {
-            return true;}{
-            else {return false;
-            }
-        }
+    if (num === 2) {
+        return true;
+    } else {
+        return false;
+    }
 }
+
 console.log(random)
 console.log(isTwo(random));
+{
+    {
+        {
+            let dallasCities = "cheap"
+        }
+    }
+    console.log(dallasCities);
 
+}
 
 /**
  * TODO:
@@ -89,7 +100,7 @@ function calculateTip(tipPercentage, totalBill) {
     return tipPercentage * totalBill;
 }
 
-console.log(calculateTip(.20,20));
+console.log(calculateTip(.20, 20));
 console.log(calculateTip(.25, 25.50))
 
 /**
@@ -102,8 +113,7 @@ console.log(calculateTip(.25, 25.50))
 var totalBillInput = prompt("What is your total bill amount?")
 var tipPercent = prompt("What percentage tip do you want to leave?");
 
-calculateTip(tipPercentInput, totalBillInput));
-
+alert(calculateTip(tipPercent, totalBillInput));
 
 /**
  * TODO:
