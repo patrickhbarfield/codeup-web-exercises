@@ -25,6 +25,13 @@
      * string, and <li> tags around each planet.
      */
 
+    planetsString = planetsArray.join('<br');
+    console.log(planetsString);
+
+    function buildPlanetString()
+
+
+
 
 // })();
 // (function(){

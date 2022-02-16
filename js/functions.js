@@ -1,13 +1,6 @@
 "use strict";
 
-function sayHello(name) {
-
-    return "Hello, " + name + "!";
-}
-
-sayHello("codeup");
-console.log(sayHello());
-
+c
 
 /**
  * TODO:
@@ -17,6 +10,9 @@ console.log(sayHello());
  * Example
  * > sayHello("codeup") // returns "Hello, codeup!"
  */
+{
+
+}
 
 var helloMessage = sayHello("Patricio");
 console.log(helloMessage);

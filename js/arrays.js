@@ -1,5 +1,37 @@
 "use strict";
 
+let numbers = [1,2,3,4,5]
+
+for (let i = numbers.length -1; i >= 0 ; i--) {
+    console.log(numbers[i]);
+}
+
+let instructors = ['Casey', 'Docrob', 'Ry', 'Jay','David'];
+
+instructors.sort();
+
+console.log(instructors);
+
+numbers.sort();
+
+console.log(numbers);
+
+//SPLITTING AND JOINING
+//run it on a screen to convert it to an array based on a delimeter.
+
+let userInfo = "ry.sutton,08/11/1994/,rysutton, ford, mustang";
+
+let userInfoArr = userInfo.split(',');
+console.log(userInfoArr);
+
+//practical use case for split
+
+let dt = new Date().toString();
+console.log(dt.split("T")[0];
+
+//join takes everything together and concatenates it into a string
+
+
 /*
 dogNames.forEach(function (dogName) {
     // this function will be eecuted on each element
