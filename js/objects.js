@@ -1,5 +1,6 @@
 
 "use strict";
+
 var person = {
     names: ["Bubba", "Mick", "Chanquantring"],
     DOB: "3/17/1983",
