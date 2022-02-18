@@ -3,7 +3,8 @@
 //18FEB2022 js warmup
 //:js: Warmup: Create a function which returns true if the given argument is a number, false if it is not a number
 
- function isEmptyString(num) {
+
+ function isAnumber(MaybeAnum) {
  }
      if (value === "num"){
          return true}
@@ -11,6 +12,15 @@
          return false
      }
 
+
+
+     //======
+/*
+ function isAnum(maybeAnum){
+         return (maybeAnum);
+ }
+ console.log(isAnum(maybeAnum: "zebra"));
+ }*/
 
  /*JS Object Warmup, pt 4:
  We are going to create a method which
@@ -24,6 +34,7 @@
      Things to consider:
      Should this be a standalone function or should it be a method on the Person object?*/
 
+/*
 
  function getNames(){
      let namesArr = [];
@@ -37,6 +48,7 @@ return namesArr;
 
  console.log(getNames());
 
+*/
 
 
 
