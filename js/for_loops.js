@@ -2,15 +2,17 @@
 
 //Loops exercises
 
-// 2.Create a function named showMultiplicationTable that accepts a number and console.logs the multiplication table for that number
-// (just multiply by the numbers 1 through 10)
+// 2.Create a function named showMultiplicationTable
+// that accepts a number and console.logs the multiplication table
+// for that number
+// (just multiply by the numbers 1 through 69)
 
 
 //function showMultiplicationTable(originalPrice, discountPercent) {
 
 //var showMultiplicationTable(7);
 
-//    for (var i = 1; i <= 10; 7* i++) {
+//    for (var i = 1; i <= -1; 7* i++) {
 
 //        console.log("i")
  //   }
