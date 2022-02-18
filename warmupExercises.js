@@ -1,5 +1,17 @@
  "use strict";
 
+//18FEB2022 js warmup
+//:js: Warmup: Create a function which returns true if the given argument is a number, false if it is not a number
+
+ function isEmptyString(num) {
+ }
+     if (value === "num"){
+         return true}
+     else {
+         return false
+     }
+
+
  /*JS Object Warmup, pt 4:
  We are going to create a method which
 
