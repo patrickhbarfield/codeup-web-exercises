@@ -1,4 +1,5 @@
 "use strict";
+/*
 
 a:any-link{
 
@@ -9,10 +10,10 @@ and that is easy, but the box model is a bit different.
 
 Every element has it's boxmodel.  It's like and onion.
 
-margin 0 auto    is a cool little trick to center boxes.  the other thing has similar functionality but this is much easier
-
-
+margin 0 auto    is a cool little trick to center boxes.  the other thin
+ has similar functionality but this is much easier
 
 
 the paddingn margin can set things to the same  just say
   padding 10px. Top, bottom,
+*/
