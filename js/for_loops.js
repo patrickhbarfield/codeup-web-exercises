@@ -18,73 +18,37 @@
 // HELP understanding random number generator
 
 // #3 Generate 10 random numbers between 20-200 and output even or odd to the console
+function randomNumber(max, min) {
+   return Math.floor(Math.random() * (max - min) + min);
+}
+ for (var i = 1; i <= 10; i++) {
+    let random = getRandomNum(200, 20);
+    if (random % 2 === 0){
+        console.log(random + " is even");
+    } else {
+        console.log(random + " is odd");
+     }
+ }
+ // break     console.log("The loop is finished");}
 
-function printRandomNumbers(){
-    for(let i = 1; i >= 20; i++){
-        let randomNum = Math.floor(Math.random()*(200 - 20 + 1));
-        if (randomNum % 2 === 0) {
-            console.log(randomNum + " is even!");
-        }
-        else
-            console.log(randomNum + "is odd!");
-    }
-    console.log("The loop is finished");}
-
-
-// "use strict";
-//
-//
-// //Part Zero - Exercise 1: making a file named for_loops.js and link to loops.html
-// //DONE
-//
-// //Part One - Exercise 2
-// function showMultiplicationTable(num){
-//     for (var i = 1; i <= 10; i++){ //for (let multiplier = 1; multiplier <= 10; multiplier++)
-//         console.log(num + "multiplied by " + i + " = " + (num * i));
-//     }
-// }
-// showMultiplicationTable(7);
-//
-//
-// //Part Two - Exercise 3
-// function randomNumber(max, min) {
-//     return Math.floor(Math.random() * (max - min) + min);
-// }
-// for (var r = 1; i <= 10; r++) {
-//     let random = getRandomNum(200, 20);
-//     if (random % 2 === 0){
-//         console.log(random + " is even");
-//     } else {
-//         console.log(random + " is odd");
-//     }
-// }
-//
 // //Part Three - Exercise 4 create a for loop that uses console.log to create the output shown
 function treeOfNumbers(height) { // created a function
-    for (var t = 1; t <= height; t++){
-        // initialization of loop and condition
-        let tree = t += ''; //assign variable
-        // let space = '' + i; don't need this
+    for (var i = 1; i <= height; i++){
+        let tree = i += '';
 
-        for (var h = 1; h <= t; h++){
+        for (var i = 1; i <= t; i++){
             tree = i.toString();
         }
-
-        //let gap = space.repeat( i - 1);
-        // tree = tree + gap; don't need this
         console.log(tree);
     }
 }
 treeOfNumbers(9);
 
-// Part Four - create a for loop that uses console.log to create the output shown
-// function minusFive() {
-//     for (let i = 1; i >= 5; i -= 5)
-// }
+ //Part Four - create a for loop that uses console.log to create the output shown
+function minusFive() {
+    for (let i = 1; i >= 5; i -= 5)
 
 
-
-/*
 
 
 // TODO: loop through numbers 1 - 40. Print "marco" if it's divisible by 3. Print "polo" if it's divisible by 5.
@@ -172,5 +136,3 @@ let password = "123acc"
 for (var i = 1; i < 10; 7*i++) {
     console.log('for loop iteration #' + i);
 }
-
-*/
