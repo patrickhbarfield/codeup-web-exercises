@@ -4,6 +4,8 @@
 
 nav {
     background: #333333;
+    color: #847477;
+    display: flex;
 }
 ul {
     list-style: none;
@@ -31,8 +33,26 @@ body {
     background: whitesmoke;
     min-height: 100vh;
 }
+.list-left {
+    display: flex;
+    margin: 0 auto;
+    justify-self: start;
+    color: white;
+}
+.center-logo {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    color: white;
+    font-grow: center;
 
+}
 
-
+.list-right {
+    display: flex;
+    margin: 0 auto;
+    justify-self: end;
+    color: white;
+}
 
 
