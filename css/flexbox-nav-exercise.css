@@ -6,6 +6,10 @@ nav {
     background: #333333;
     color: #847477;
     display: flex;
+    justify-content: space-between;
+}
+nav ul{
+    font-family: "Work Sans", sans-serif;
 }
 ul {
     list-style: none;
@@ -25,7 +29,8 @@ nav a:hover {
 }
 
 nav ul li:nth-child(4) {
-    margin-left: auto;
+    flex:1;
+   justify-content: center;
 }
 body {
     margin: 0;

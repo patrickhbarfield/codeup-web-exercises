@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    <put in viewport meta tag here></put>-->
+    <title>OG Lawn Salon</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <!-- can link to custom css here-->
+
+    creating content that only shows up when you click a certain button.
+    build your own pizza tab, show a card that holds a card.
+    cards in side of cards, and checkboxes inside of those.  there will be
+    alot of divs in there.  make sure you name your structure and elements
+    appropriately.  give them id's and classes to keep them distinguished.
+    and make sure you are methodical on how you add code, and that you have
+    a plan before you start throwing stuff in there.
+
+    Must be using bootsrrap 4.  website doesn't need to be functional.  Navbar
+    just needs to look this way.  No clicks etc. drop downs need to work, but
+    previous next doesn't need to be functional.
+
+    There is a tab and tab panes, but there isn't something for hoking them up.
+    we have to do that in Javascript themselves.  Hqve the cards, chees and sauce, an
+    and display options, THEN get them to work with the tab pains.  Content first
+    then functionailty.  Look in Navs, and you can see examples.
+
+    click on javascript behavior on the right, and you will see tha tit is
+    funcitonal.
+<!--// a framework binds you to what you do, controls the flow.  you have
+    to use the classes that bootsrap defines.-->
+<!--
+    //flexbox and grid don't work together.  ex. if you are using
+    bootstrap grid on the element, and in your custom css you are
+    trying to make it a flexbox, problems.  But custom coloring will
+    work well.  Put things in with intentionality, and notice where
+    they aren't changing.  Treat it just like html.  -->
+    <!--
+    the class is disabled, it is class heavy.  the nav element has 4 classes,
+    you can put them all in the same set of quotation makrs.  -->
+<!--
+    bg-light  is what sets background.
+    Bootstrap grid and handburgers is going to be a lesson on its own.-->
+
+ <!--   layout documentaiton has containers with articulated breakpoints.
+    the div class of container-sm ms lg, depends on where you want to apply
+    the container.  That is all part of bootstrap grid.
+
+    We saw componenets, which are like items you can put in your document, nav bar
+    cards, buttons.
+    Utilities are tools that you can use to hep customise those things.
+
+    when you have a . before it, it's reminding you it is a class.  but don't use the
+    dot
+
+    When using bootstrap, or any other framework, use it as much as you can
+    before you start customizing it.
+
+    Example would be to do custom color, if there isn't simple.
+    never uses grid, uses bootstrap grid.  leverage the framework for what it can
+    help you with, and what
+
+    explore other things/frameworks outside of bootstrap.  materialize css is cool, and tailwind
+is very customizable.  On capstone, you can use what you want-->
+
+</head>
+<body>
+
+<h1>OG Landscaping</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">OG Services</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<!--// some have behaviors.  you click on it
+and it does something.  we do that using
+javascript.  so make sure yo have the scripts
+in your file so you can use that stuff.
+copy scripts from bundle.  bottom of body.
+write code ahead of the scripts-->
+
+<!--go to boostrap documaention and find what you need.
+ex. nav bar-->
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+<!--custom js goes here&ndash;&gt;-->
+</body>
+</html>
