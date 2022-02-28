@@ -1,7 +1,7 @@
 //@Kam_Ramz
 "use strict";
 
-/*public class ClassName extends Application {
+/*private class ClassName extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 }
