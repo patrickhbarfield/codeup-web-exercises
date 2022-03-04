@@ -28,6 +28,10 @@
     }
 
     let timeBomb = setInterval(updateTimer, 1000);
+        let backgroundColor = document.body.style['background-color'];
+
+        if (backgroundColor)
+
 
     // TODO: When this function runs, it needs to
     // cancel the interval/timeout for updateTimer()
@@ -35,6 +39,8 @@
         let clear = clearInterval(timeBomb);
         alert('BOM has been defused. You are now free to live another day')
     }
+
+
 
     // Don't modify anything below this line!
     //
