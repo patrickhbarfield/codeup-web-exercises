@@ -12,127 +12,37 @@
             console.log(num * multiplier);
         }
     }
-    showMultiplicationTable(10);
+    showMultiplicationTable(7);
 
 // HELP with brackets/curly brace placement
 // HELP understanding random number generator
 
 // #3 Generate 10 random numbers between 20-200 and output even or odd to the console
-function randomNumber(max, min) {
-   return Math.floor(Math.random() * (max - min) + min);
+/*function randomNumber(max, min) {*/
+for (var i = 1; i <= 10; i++) {
+    var randomNum = Math.floor(Math.random() * (200 - 20 + 1) + 20);
+    if (randomNum % 2 === 0) {
+        console.log(randomNum + " is even.")
+    } else if (randomNum % 2 !== 0) {
+        console.log(randomNum + " is odd.")
+    }
+
 }
- for (var i = 1; i <= 10; i++) {
-    let random = getRandomNum(200, 20);
-    if (random % 2 === 0){
-        console.log(random + " is even");
-    } else {
-        console.log(random + " is odd");
-     }
- }
- // break     console.log("The loop is finished");}
+console.log(randomNum)
 
-// //Part Three - Exercise 4 create a for loop that uses console.log to create the output shown
-function treeOfNumbers(height) { // created a function
-    for (var i = 1; i <= height; i++){
-        let tree = i += '';
-
-        for (var i = 1; i <= t; i++){
-            tree = i.toString();
-        }
-        console.log(tree);
-    }
-}
-treeOfNumbers(9);
-
- //Part Four - create a for loop that uses console.log to create the output shown
-function minusFive() {
-    for (let i = 1; i >= 5; i -= 5)
-
-
-
-
-// TODO: loop through numbers 1 - 40. Print "marco" if it's divisible by 3. Print "polo" if it's divisible by 5.
-//  -> If it's neither print "I'm not playing"
-//  -> Print "marco polo" if it's divisible by 3 and 5.
-
-for (let i = 1; i <= 40; i++) {
-
-    if (i % 3 === 0) {
-        console.log("marco");
-    } else if (i % 5 === 0) {
-        console.log("polo")
-    } else if (i % 3 !== 0 && i % 5 !== 0) {
-        console.log("I'm not playing... this isn't fun :(");
-    else if (i % 3 === 0 && i % 5 === 0){
-            console.log("Macro Polo")
-        }
-    }
-
-    /!*
-    function marcoPoloOrNum(maxnum){
-    for(let i = 1; i <= maxnum; i++){
-        if (i % 3 === 1 && i % 5 === 1){
-            console.log('Marco Polo');
-        }else if(i % 3 === 1){
-            console.log("Marco");
-        }else if (i % 5 === 1){
-            else{
-                console.log(i)
-            }
-        }
-    }
-    }
-    let (num)
-    for ()
-
-
-    // while and do while are indeterminate.  we know what will stop, but don't know how many
-    // for loop we know what will stop the loop and how many iterations it executes
-
-    let letters = "";
-
-    //\\can't use strings as a control variable.  but you can ' +
-    //'use it in a different way.  you can use a property on a ' +
-    //'string object to see how many characters are in it.  '
-
-    for (let i = letters.length; i <= 36; i++){
-    letters += "z";
-    console.log(letters);
-    }
-    console.log(letters.length);
-
-    for (/!*control variable*!/'; /!*test condition*!/; /!*iterator*!/'){
-//code to run for each iteration of the loop
-    }
-
-    test condition gives you t/f back.  the control and the iterator is what makes it truely work
-    step one - id control variable.
-    2 - test the condition-
-    3 - run the code.
-
-/!*
-
-let num = 8;
-
-for(num; num <= 50; num++){
-    console.log(num)
-
-function loopNums() {
-
-    let num = 2;
-
-    while (num <= 65536) {
-        num *= 2;
-    }
-    return num;
-}
-        console.log(num);
-    }
+//Exercise 4
+//Solutiuon 1
+var totalNumOfRows = 9
+for (var i = 1; i <= totalNumOfRows; i++) {
+    console.log((i + "").repeat(i));
 }
 
 
-let password = "123acc"
+//Exercise 5
 
-for (var i = 1; i < 10; 7*i++) {
-    console.log('for loop iteration #' + i);
+for (var i = 100; i >= 5; i--) {
+    if (i % 5 === 0) {
+        console.log(i);
+    }
 }
+
