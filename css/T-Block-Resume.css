@@ -1,4 +1,3 @@
-"use strict";
 
 div {
     text-align: center;
@@ -24,6 +23,7 @@ div {
 
 /* selector for all "em" elements
 merc didn't have an * */
+
 
 em * {
     font-weight: bold;
