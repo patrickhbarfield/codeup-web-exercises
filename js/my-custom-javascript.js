@@ -1,30 +1,84 @@
 "use strict";
 
-$("#myHeader").css());
 
-let student = {
-    userName: "Kamron",
-    id: 12,
-    role: student
-}
-
-$('body').append(getTemplate(student));
+$('.h1').css('background-color', 'yellow');
 /*
-INjecting values on the fly in Javascript.  When appended to the DOM, it's a whole ' +
-'chucnk on your dom with everything you need.  If you have bootstrap, you can have the class as a con' +
-'container '*/
+/!*
 
-function getTemplate()[
-    return '<div>' +
-        '<h1>TEMPLATES >>>>yah</h1>
-        <p>Hey, ${userName}! u can use templaaaates!
-    </div>';
+<style>)
+    #myHeader {
+        background-color: lightblue;
+        color: black;
+        padding: 40px;
+        text-align: center;
+    }
+</style>
+*!/
+*/
 
-                     ]
+$('.codeup').css('border', 'solid red 1.5px');
+
+let text ;
+$(document).ready(function (){
+    text = $('divStyle').text();
+    alert("divStyle alerted!");
+});
+
+$('h1').css('background-color', 'light gold');
 
 $(document).ready(function() {
-    alert("DOM has loaded" );
+    alert("DOM has loaded");
 });
 
 /*
-stop putting html in the html doc.  no more html hard-coding inside the body*/
+$(document).ready(function(){
+
+    let = liHandler = function () {
+        $(this).css(background.color, 'yellow');
+    });
+
+    }
+    $('p').click(function(){
+    console.log($(this).css('background-color'));
+    if  $(this).css('background-color') === 'rgba(0,0,0,0)'){
+        $(this).css('background-color', 'yellow');
+    } else {
+        $(this).css('background-color', 'white');
+
+});
+
+$('h1').dblclick(function() {
+    console.log('double click');
+$(this).css('color','teal')};
+    });
+
+$('.sec-intro').hover(function () {
+    $(this).css('font-style', 'italic');
+}
+function() {
+    $(this).css('style','normal');
+});
+
+
+//keyboard events
+$(document)
+
+$('search').keydown(function (e)) {
+    console.log(e.key)
+}
+
+------
+    ex for mouseclick  lesson:
+$(document).ready(function (){
+    let myKonami = [82,89,65];
+    let knownPosition = 0
+    console.log(e.keyCode);
+})
+*/
+
+
+/*
+
+
+*!/
+*/
