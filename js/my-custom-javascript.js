@@ -9,8 +9,51 @@ $(document).ready(function (){
     alert("h1 highlighted!");
 
 
-var contents = $('h1').html(){
+var contents = $('h1').html();{
 alert(contents)};
+
+$('body').html(getNewParagraph());
+
+$('body')
+
+//language=HTML
+function getNewParagraph(){
+    return
+        <div>
+
+        </div>
+})
+
+$(getNewParagraph()).after("body")  ($"script:second"))
+
+    $('body > script').first().before(getNewParagraph())
+
+    //toggle on a class
+    $('body > script').first().before(getNewParagraph())
+        .addClass(value:'.test-class');
+
+//to replace with jQuery
+    console.log($('navContent').html());
+
+    //ex to change all: put script up in your head so style doesn't get applied, but won't do anything.
+$('*').css('border', value:"red 2px solid")
+
+
+    //.each
+$("body > div > p").hover(function (){
+$(this).css('background-color', value:"red")}, function (){
+    $(this).css('background-color', value: 'white');
+})
+    // calling .each takes a callback, and will execute
+for each item in the specified collection
+
+    $("body > div > p").each(function(){
+        console.log($(this).text())
+})
+
+$.each(function(item){
+    console.log(item);
+}
 
 
 /*
