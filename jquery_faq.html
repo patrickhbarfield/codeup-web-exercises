@@ -1,10 +1,40 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <title>jquery_faq</title>
+    <link rel="stylesheet" href="css/jquery_faq.css">
+           <script> integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossOrigin="anonymous"</script>
+    <script defer src="/js/jquery_faq.js"></script>
+    <script src="js/jquery-2.x-git.js"></script>
 </head>
+
 <body>
+
+<p>US National Parks</p>
+
+<dl>
+  <dt> Big Bend</dt>
+  <dd class="invisible"> 2 biomes, desert, riparian, and alpine</dd>
+
+  <dt>Arkansas hotsprings</dt>
+  <dd class="invisible"> newly added national park with an interesting gangster history</dd>
+
+  <dt>Grand Canyon</dt>
+  <dd class="invisible"> Can take a donkey down into the center.  Controversial glass lookout platform added some years ago</dd>
+
+</dl>
+
+<script>"use strict";
+
+$(document).toggleClass(function() {
+    if ( $( this ).parent().is( ".bar" ) ) {
+        return "happy";
+    } else {
+        return "sad";
+    }
+});</script>
 
 </body>
 </html>
