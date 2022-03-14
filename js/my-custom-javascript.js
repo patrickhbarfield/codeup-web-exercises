@@ -1,7 +1,19 @@
 "use strict";
 
+$('h1').css('background-color', 'gold');
+$('li').css("font-size", '20px');
+$('h1','p','li').css(".highlightme", 'FFFF00');
 
-$('.h1').css('background-color', 'yellow');
+$(document).ready(function (){
+    $('h1').text();
+    alert("h1 highlighted!");
+
+
+var contents = $('h1').html(){
+alert(contents)};
+
+
+/*
 /*
 /!*
 
@@ -15,7 +27,7 @@ $('.h1').css('background-color', 'yellow');
 </style>
 *!/
 */
-
+/*
 $('.codeup').css('border', 'solid red 1.5px');
 
 let text ;
@@ -24,11 +36,11 @@ $(document).ready(function (){
     alert("divStyle alerted!");
 });
 
-$('h1').css('background-color', 'light gold');
+
 
 $(document).ready(function() {
     alert("DOM has loaded");
-});
+});*/
 
 /*
 $(document).ready(function(){

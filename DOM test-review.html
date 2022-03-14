@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/DOM test-review.css">
+    <title>DOM test-review</title>
+</head>
+<body>
+<main class="row mx-auto mt-4">
+
+    <div class="col-3 card m-3">
+        <input class="m-3" id="user-input" type="text">
+    </div>
+    <div class="col-3 card m-3">
+        <span>Your text: </span><span id="user-output"></span>
+    </div>
+
+<!--    <div class="col-4 card">
+first element
+    </div>
+    <div class="col-4 card">
+second element
+    </div>-->
+    <div class="col-4 card">
+third element
+    </div>
+    <div class="col-4 card">
+4th element
+    </div>
+    <div class="col-4 card">
+5th element
+    </div>
+    <div class="col-4 card">
+6th element
+    </div>
+    <div class="col-4 card">
+7th element
+    </div>
+    <div class="col-4 card">
+8th element
+    </div>
+    <div class="col-4 card">
+9th element
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<!--
+
+<script>
+//select the element to apply the listener
+    $('main:div:first-child').hover(function (){
+        //get content from the hovered element
+        let content = $(this).html();
+        $('main div:nth-child(3)').html(content);
+        console.log(content);
+    })
+</script>
+-->
+
+<script>
+    //select the element to apply the listener
+    $('main:div').hover(function (){
+        //get content from the hovered element
+        let content = $(this).html();
+        $('main div:('')').html(content);
+        console.log(content);
+    })
+</script>
+
+let originalColor;
+//1. select elements and add event listener
+$('.card').hover(function(){
+2. apply classes/styles to hovered-in element
+originalColor = $(this).css('background-color');
+$(this).toggleClass('bg-dark');
+$(this).toggleClass('text-light');
+$(this).css('background-color', 'lightblue'):
+}, function(){
+$(this).css('background-color', original Color);
+})
+
+=======
+//printout what/when someone types in
+$('#user-input').keyup(function(){
+    let content = $(this).text();
+$('user-output').text(content);
+})
+
+
+</body>
+</html>
