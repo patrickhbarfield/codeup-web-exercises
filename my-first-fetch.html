@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>my-first-fetch</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+<!--//if you don't have this, your key will be undefined.-->
+
+<div id="weather"></div>
+
+<script src="js/keys.js"></script>
+
+
+<script>
+
+    let lat = 33.44;
+    let long = 94.04;
+    let units = "imperial";
+    let lang = "sp"
+
+// looking into template strings into the future.  You can hard code this and have it return on click as a fetch.
+    fetch("https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&lang=sp&moonrise&appid=" + OWM_KEY)
+/*    + lat + "&lon=" + long "&units=" + units + "&appid="*/
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+
+
+        let html = "";
+        html+= '<ul>';
+    for (let i = 0; i < 5; i++) {
+        let dailyTemp = data.daily[i].temp.day
+
+        html += '<li>' + dailyTemp + '<li>';
+    }
+
+        html += '</ul>';
+
+    $('#weather').html(html);
+    });
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Twitter-Fetch</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    Authentication: Basic
+</head>
+<body>
+
+<div id="Twitter-fetch div bucket"></div>
+
+<script src="js/keys.js"></script>
+
+<script> fetch("https://gnip-api.twitter.com/search/30day/accounts/<account-name>/prod/counts.json?query=from%3Atwitterdev" + TWT_KEY)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    });
+
+</script>
+</body>
+</html>

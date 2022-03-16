@@ -8,23 +8,57 @@
             crossOrigin="anonymous"</script>
     <script defer src="/js/jquery_faq.js"></script>
     <script src="js/jquery-2.x-git.js"></script>
+    <style>invis</style>
 </head>
 
 <body>
 
-<p>US National Parks</p>
+<p><h1>US National Parks</h1></p>
 
 <dl>
-  <dt> Big Bend</dt>
+  <dt><h3>Big Bend</h3></dt>
   <dd class="invisible"> 2 biomes, desert, riparian, and alpine</dd>
+    <dd>Hoodoos in the Devils Den</dd>
+    <dd>Where to swim accross</dd>
+    <dd>Cacti both rare and common</dd>
+    <dd>Where to find the rare birds of Big Bend</dd>
+    <dd>Lost Mines of Mineral</dd>
 
-  <dt>Arkansas hotsprings</dt>
+  <dt><h3>Arkansas hotsprings</h3></dt>
   <dd class="invisible"> newly added national park with an interesting gangster history</dd>
+    <dd>Gangsta Hangouts</dd>
+    <dd>where to buy cool hats</dd>
+    <dd>Demographics of area</dd>
+    <dd>HotSprings entry fees</dd>
 
-  <dt>Grand Canyon</dt>
-  <dd class="invisible"> Can take a donkey down into the center.  Controversial glass lookout platform added some years ago</dd>
+  <dt><h3>Grand Canyon</h3></dt>
+  <dd class="invisible"> Can take a donkey down into the center.
+      <dd>Lookout platform and controversy</dd>
+<dd>Formation</dd>
+    <dd>Inhabitants</dd>
+    <dd>Deaths per year, we got a jumper!!!</dd>
 
 </dl>
+
+<button>id='</button>
+
+
+
+<script>$('#display-dd').click(function (){
+    $('dd').toggleClass()
+
+    // use each method when asking for "Each" takesa a callback function
+
+    $('#highlighter').click(function (){
+        $('ul').each(function (){
+            $(this).children().last().toggleClass('highlighted');
+        });
+    });
+
+
+
+})</script>
+<!--
 
 <script>"use strict";
 
@@ -35,6 +69,7 @@ $(document).toggleClass(function() {
         return "sad";
     }
 });</script>
+-->
 
 </body>
 </html>
