@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/weather_map">
+    <title>weather_map</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<script src="js/keys.js"></script>
+
+<header>
+    Logo Here - Wither the Weather - Signup
+</header>
+<nav>
+    <ul>
+        <li>links to main site</li>
+        <li>more links to main site</li>
+    </ul>
+</nav>
+
+<input type="text" name="location" placeholder="enter loc to get weather">
+<input type="password" name="password">
+
+<div id="weather"></div>
+
+<main>
+    <section class="pricing-plans">
+        Oh it's Free!
+    </section>
+    <article>
+        Weather Service Application
+    </article>
+</main>
+
+<aside>
+    secondary nav element/or ad
+</aside>
+
+<!--
+function renderDailyForecast(forecast) {
+$('body').append(
+<div class="px-2">
+    <h3>Temperature Feels Like</h3>
+    <p>${forecast.feelsLike}</p>
+</div>
+<div class='px-2'>
+    <h3 class="fancy-header">Humidity</h3>
+    <p>${forecast.humidity}</p>
+</div>
+);
+}-->
+
+<script>
+//Puerto Escondido, MX coords
+    let lat = 15.8720;
+    let long = 97.0767;
+    let units = "imperial";
+
+    //initialize weather data
+// now we can call get weatherdata to change based on user-input
+    getWeatherData(lat, lon);
+
+    function getWeatherData(lat, lon) {
+//curly brace w/backtiks
+        fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=imperial&appid=${OWM_KEY}`)
+            .then(response => response.json())
+            //one line arrow function - .then says when the response comes back execute this.
+            .then((data) => {
+                console.log(data.current.temp);
+                console.log(data);
+
+//append to the body - bulding a string represeentation of html to insert in doc once data comes back
+                let html = "";
+                html += '<ul>';
+                for (let i = 0; i < 5; i++) {
+                    html += '<div>';
+                    html += '<div>' + data.daily[i].humidity + '</div>'
+                    html += '<div>' + data.daily[i].moon_phase + '</div>'
+                    /*    html += '<div>' + data.daily[i]. + '</div>'*/
+
+//write bootsrap classes within div
+                    let dailyTemp = data.daily[i].temp.day
+                    html += '<li>' + dailyTemp + '<li>';
+                }
+                html += '</div>';
+                $('#weather').html(buildCardCont(data.daily));
+            });
+    }
+    function etractWeatherData
+
+    function buildCardCount(dayArr) {
+    let html = '<div>'
+    }
+
+//card takes in one dayts worth of data
+    function buildWeatherCard(day) {
+    let html = " ";
+        //paste bootsrap card here.
+        // ry likes to give all of the days
+    <div class='card' style="width; 18rem;"
+
+         ${day.dt}
+
+    }
+    }
+    //convert the date
+    function formatDate(UNIXdate) {
+        let date = new Date(unixDate * 1000).toISOString();
+        return date;
+
+    }
+
+</script>
+
+</body>
+</html>

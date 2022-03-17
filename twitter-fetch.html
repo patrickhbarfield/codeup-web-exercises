@@ -5,7 +5,6 @@
     <title>Twitter-Fetch</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    Authentication: Basic
 </head>
 <body>
 
@@ -13,10 +12,25 @@
 
 <script src="js/keys.js"></script>
 
-<script> fetch("https://gnip-api.twitter.com/search/30day/accounts/<account-name>/prod/counts.json?query=from%3Atwitterdev" + TWT_KEY)
+<script> /*fetch("https://api.twitter.com/2/tweets?" + TWT_KEY)
     .then(response => response.json())
     .then(data => {
         console.log(data);
+
+        */
+fetch("https://textapis.p.rapidapi.com/text?url=https%3A%2F%2Fwww.theguardian.com%2Fworld%2F2020%2Foct%2F24%2Fthousands-join-poland-protests-against-strict-abortion-laws", {
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-host": "textapis.p.rapidapi.com",
+        "x-rapidapi-key": "5b281d88ebmshe0818469cf7cb5ap1ba8afjsn13fe5fecba43"
+    }
+})
+    .then(response => {
+        console.log(response);
+    })
+    .catch(err => {
+        console.error(err);
+
     });
 
 </script>

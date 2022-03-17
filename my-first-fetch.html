@@ -7,19 +7,28 @@
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
-<!--//if you don't have this, your key will be undefined.-->
 
 <div id="weather"></div>
 
 <script src="js/keys.js"></script>
 
+function renderDailyForecast(forecast) {
+$('body').append(
+<div class ="px-2">
+    <h3>Temperature Feels Like</h3>
+<p>${forecast.feelsLike}</p>
+</div>
+<div class='px-2'>
+    <h3>Humidity</h3>
+<p>${forecast.humidity}</p>
+</div>
+);
+}
 
 <script>
-
     let lat = 33.44;
     let long = 94.04;
     let units = "imperial";
-    let lang = "sp"
 
 // looking into template strings into the future.  You can hard code this and have it return on click as a fetch.
     fetch("https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&lang=sp&moonrise&appid=" + OWM_KEY)
@@ -27,7 +36,6 @@
     .then(response => response.json())
     .then(data => {
         console.log(data);
-
 
         let html = "";
         html+= '<ul>';
