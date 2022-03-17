@@ -21,12 +21,12 @@
 
 <!-- The HTML element that serves as the Mapbox container -->
 <div id='map'></div>
-<script src = "../js/keys.js"></script>
+<script src = "../keys.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- Mapbox JS -->
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-<script src="../js/geocoder-utils.js></scriptsrc></script>
+<script src="/js/geocoder-utils.js"></script>
 
 <!-- Custom JS -->
 <script>
@@ -47,24 +47,25 @@
         });
     }
 
-/*    function createPopup(lon,lat)
+/*function createPopup(lon,lat)
     {
         = new mapboxgl.Popup()
             .setLngLat([-98.489615, 29.426827])
             .setHTML("<p>Codeup Rocks!</p>")
             .addTo(map)
-    }*/
-
+}*/
     function createMarker(lon, lat){
         return new mapboxgl.Marker()
         .setLngLat([lon, lat])
         .addTo(map);
-    }
 
-/* can reset map properties programitcally
+<!--
+can reset map properties programitcally-->
+/*
   map.set
     map.setZoom(5);
-    map.setCenter([lat,lon])*/
+    map.setCenter([lat,lon])
+*/
 
     let marker = new mapboxgl.Marker()
         .setLngLat([startingLon, startingLat])
@@ -76,6 +77,8 @@
         console.log(result);
         map.setCenter(result);
         map.setZoom(20);
+    }
+    )};
 
 </script>
 </body>
