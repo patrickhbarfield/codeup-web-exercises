@@ -12,47 +12,7 @@
 <body>
 <script src="keys.js"></script>
 
-<header>
-    Logo Here - Wither the Weather - Signup
-</header>
-<nav>
-    <ul>
-        <li>links to main site</li>
-        <li>more links to main site</li>
-    </ul>
-</nav>
-
-<input type="text" name="location" placeholder="enter loc to get weather">
-<input type="password" name="password">
-
 <div id="weather"></div>
-
-<main>
-    <section class="pricing-plans">
-        Oh it's Free!
-    </section>
-    <article>
-        Weather Service Application
-    </article>
-</main>
-
-<aside>
-    secondary nav element/or ad
-</aside>
-
-<!--
-function renderDailyForecast(forecast) {
-$('body').append(
-<div class="px-2">
-    <h3>Temperature Feels Like</h3>
-    <p>${forecast.feelsLike}</p>
-</div>
-<div class='px-2'>
-    <h3 class="fancy-header">Humidity</h3>
-    <p>${forecast.humidity}</p>
-</div>
-);
-}-->
 
 <script>
     //Puerto Escondido, MX coords
@@ -91,24 +51,30 @@ $('body').append(
             });
     }
 
-    /*    function etractWeatherData*/
+/*  function etractWeatherData*!/*/
 
-    function buildCardCount(dayArr) {
+    function buildCardContent(dayArr) {
         let html = '<div>'
+        for (let i = 0; i < 5; i++) {
+            html += buildWeatherCard(dayArr[i]);
+        }
+        html += '</div>'
     }
 
     //card takes in one days worth of data
     function buildWeatherCard(day) {
         let html = " ";
         //paste bootsrap card here.
-
-        html += `<div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+        html +=
+            `<div class="card" style="width: 18rem;">
+    <!--      <img class="card-img-top" src="..." alt="Card image cap">-->
+                <div class="card-header">
+                ${day.dt}
+              </div>
+                 <!--   <h5 class="card-title">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
-                </div>
+                </div>-->
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Cras justo odio</li>
                     <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -118,6 +84,7 @@ $('body').append(
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>`
+        return html;
     }
 /*
         {
