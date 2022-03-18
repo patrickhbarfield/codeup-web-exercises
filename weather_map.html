@@ -55,13 +55,13 @@ $('body').append(
 }-->
 
 <script>
-//Puerto Escondido, MX coords
+    //Puerto Escondido, MX coords
     let lat = 15.8720;
     let long = 97.0767;
     let units = "imperial";
 
     //initialize weather data
-// now we can call get weatherdata to change based on user-input
+    // now we can call get weatherdata to change based on user-input
     getWeatherData(lat, lon);
 
     function getWeatherData(lat, lon) {
@@ -70,8 +70,8 @@ $('body').append(
             .then(response => response.json())
             //one line arrow function - .then says when the response comes back execute this.
             .then((data) => {
-                console.log(data.current.temp);
                 console.log(data);
+                console.log(data.current);
 
 //append to the body - bulding a string represeentation of html to insert in doc once data comes back
                 let html = "";
@@ -90,29 +90,41 @@ $('body').append(
                 $('#weather').html(buildCardCont(data.daily));
             });
     }
-    function etractWeatherData
+
+    /*    function etractWeatherData*/
 
     function buildCardCount(dayArr) {
-    let html = '<div>'
+        let html = '<div>'
     }
 
-//card takes in one dayts worth of data
+    //card takes in one days worth of data
     function buildWeatherCard(day) {
-    let html = " ";
+        let html = " ";
         //paste bootsrap card here.
-        // ry likes to give all of the days
-    <div class='card' style="width; 18rem;"
 
-         ${day.dt}
-
+        html += `<div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>`
     }
-    }
-    //convert the date
-    function formatDate(UNIXdate) {
-        let date = new Date(unixDate * 1000).toISOString();
-        return date;
-
-    }
+/*
+        {
+            let date = new Date(unixDate * 1000).toISOString();
+            return date;
+        }
+*/
 
 </script>
 
