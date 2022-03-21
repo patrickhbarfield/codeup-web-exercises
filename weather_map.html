@@ -112,6 +112,32 @@
 
 </main>
 
+<script>
+    mapboxgl.accessToken = MPBX_KEY;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 20,
+        center: [-98.4916, 29.4252]
+    });
+
+    // the  geocode method from mapbox-geocoder-utils.js
+    geocode("412 N. BISHOP AVE, Dallas, TX 75208", MPBX_KEY).then(function(result) {
+        console.log(result);
+        map.setCenter(result);
+        map.setZoom(15);
+    });
+    /*
+        var marker = new mapboxgl.Marker()
+            .setLngLat([-96.82824703303454, 32.74887953308386])
+            .addTo(map);
+    var alamoPopup = new mapboxgl.Popup()
+            .setHTML(<p>"BOM Spot"</p>)
+        marker.setPopup(alamoPopup)*/
+
+
+</script>
+
 <!--
 <div class="d-flex justify-content-center my-5">
 &lt;!&ndash;    <img class="weather-logo" src="insert img here" alt="Wither the Weather">&ndash;&gt;
@@ -139,88 +165,6 @@
 <script src="js/geocoder-utils.js"></script>
 <!--Weather Map Script-->
 <script src="js/weather_map.js"></script>
-
-<!--
-
-<script>
-    //Austin TX coords
-    let lat = 30.2672;
-    let long = 97.7431;
-    let units = "imperial";
-
-    //initialize weather data
-    // now we can call get weatherdata to change based on user-input
-    getWeatherData(lat, long);
-
-    function getWeatherData(lat, long) {
-//curly brace w/backtiks
-        fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=imperial&appid=${OWM_KEY}`)
-            .then(response => response.json())
-            //one line arrow function - .then says when the response comes back execute this.
-            .then((data) => {
-                console.log(data);
-                console.log(data.current);
-            })
-//append to the body - bulding a string represeentation of html to insert in doc once data comes back
-        let html = "";
-        html += '<ul>';
-        for (let i = 0; i < 5; i++) {
-            html += '<div>';
-            html += '<div>' + data.daily[i].humidity + '</div>'
-            html += '<div>' + data.daily[i].moon_phase + '</div>'
-        }
-    }
-
-
-    /*    html += '<div>' + data.daily[i]. + '</div>'*/
-
-    //write bootsrap classes within div
-
-    /*  function etractWeatherData*!/*/
-
-    /*
-        function buildCardContent(dayArr) {
-            let html = '<div>'
-            for (let i = 0; i < 5; i++) {
-                html += buildWeatherCard(dayArr[i]);
-            }
-            html += '</div>'
-        }
-    */
-
-    /*    //card takes in one days worth of data
-        function buildWeatherCard(day) {
-            let html = " ";
-            //paste bootsrap card here.
-            html +=
-                `<div class="card" style="width: 18rem;">
-        &lt;!&ndash;      <img class="card-img-top" src="..." alt="Card image cap">&ndash;&gt;
-                    <div class="card-header">
-                    ${day.dt}
-                  </div>
-                     &lt;!&ndash;   <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                            card's content.</p>
-                    </div>&ndash;&gt;
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>`
-            return html;
-        }*/
-    /*
-            {
-                let date = new Date(unixDate * 1000).toISOString();
-                return date;
-            }
-    */-->
-
-</script>
 
 </body>
 </html>
