@@ -1,5 +1,5 @@
-
 /*Ensures code only runs once DOM  is ready*/
+/*
 $(document).ready(function () {
 
     "use strict";
@@ -10,30 +10,30 @@ $(document).ready(function () {
 
     // Call 5 day / 3 hour forecast data
 
-    function getWeatherIN5Days() {
+    function getFiveDayWeather() {
         $.get("https://api.openweathermap.org/data/2.5/forecast",  {
             q: $("#current-city").html().split(": ")[1],
             appid: openWeatherAppId,
             units: "imperial"
         }).done(function (results) {
-            let weathersInEvery3Hrs = results.list;   // 5 day / 3 hour forecast data (0:00am, 3:00, 6:00, 9:00, 12:00pm, 3:00pm, 6:00pm, 9:00pm)
+            let ThreeHourWeather = results.list;   // 5 day / 3 hour forecast data (0:00am, 3:00, 6:00, 9:00, 12:00pm, 3:00pm, 6:00pm, 9:00pm)
 
-            // filter out the weathers at 9:00am everyday
-            const weatherIn5Days = weathersInEvery3Hrs.filter(weather => weather.dt_txt.split(" ")[1] === "09:00:00");
+            // filter out the weather at 9:00am everyday
+            const FiveDayWeather = ThreeHourWeather.filter(weather => weather.dt_txt.split(" ")[1] === "09:00:00");
 
-            for (let i = 0; i < weatherIn5Days.length; i++) {
-                const iconcode = weatherIn5Days[i].weather[0].icon;
+            for (let i = 0; i < FiveDayWeather.length; i++) {
+                const iconcode = FiveDayweather[i].weather[0].icon;
                 const iconurl = `http://openweathermap.org/img/w/${iconcode}.png`;
                 $(".card-deck .card").eq(i).html(
-                    `<h5>${weatherIn5Days[i].dt_txt.split(" ")[0]}</h5>
-                    <h6><strong>${weatherIn5Days[i].main.temp_max}/${weatherIn5Days[i].main.temp_min}</strong></h6>
+                    `<h5>${FiveDayWeather[i].dt_txt.split(" ")[0]}</h5>
+                    <h6><strong>${FiveDayWeather[i].main.temp_max}/${FiveDayWeather[i].main.temp_min}</strong></h6>
                     <div><img src=${iconurl} alt="Weather icon"></div>
                     <div class="card-body">
                         <ul class="card-text list-group">
-                            <li>Description: <strong>${weatherIn5Days[i].weather[0].description}</strong></li>
-                            <li>Humidity: <strong>${weatherIn5Days[i].main.humidity}</strong></li>
-                            <li>Wind: <strong>${weatherIn5Days[i].wind.speed}</strong></li>
-                            <li>Pressure: <strong>${weatherIn5Days[i].main.pressure}</strong></li>
+                            <li>Description: <strong>${FiveDayWeather[i].weather[0].description}</strong></li>
+                            <li>Humidity: <strong>${FiveDayWeather[i].main.humidity}</strong></li>
+                            <li>Wind: <strong>${FiveDayWeather[i].wind.speed}</strong></li>
+                            <li>Pressure: <strong>${FiveDayWeather[i].main.pressure}</strong></li>
                         </ul>
                     </div>
                 </div>`);
@@ -78,7 +78,7 @@ $(document).ready(function () {
         appid: openWeatherAppId,
         units: "imperial"
     }).done(function (weather) {
-        getWeatherIN5Days();
+        get5DayWeather();
         const displayCurrentWeather = new mapboxgl.Popup()
             .setHTML(getCurrentWeather(weather));
 
@@ -102,7 +102,7 @@ $(document).ready(function () {
             $("#current-city").html("Current city: " + city);
 
             // Update the five-day forecast in new location
-            getWeatherIN5Days();
+            getFiveDayWeather();
 
             $.get("https://api.openweathermap.org/data/2.5/weather", {
                 q: city,
@@ -158,13 +158,12 @@ $(document).ready(function () {
             });
 
             // Update the five-day forecast in new location
-            getWeatherIN5Days();
+            getFiveDayWeather();
 
             $("#place").val("");  // clear input
         });
     });
 });
-
 
 mapboxgl.accessToken = mapboxToken;
 const map = new mapboxgl.Map({
@@ -196,16 +195,23 @@ $(".dark-mode").click(function () {
         map.setStyle("mapbox://styles/mapbox/streets-v11");
     }
 });
+*/
 
-/*
 "use strict"
 
 //Default starting location
 let startingLat = 30.2672;
-let startingLon = 97.7431;
+let startingLon = -97.7431;
 
 let map = initMap(startingLon, startingLat);
+getWeatherData(startingLat, startingLon)
 
+
+
+let marker = getMarker(startingLon, startingLat)
+setMapClickEvent()
+//update both weather and map once ou recieve user-input - just need the lat long to update weather cards.  Marker/userinput
+//style, marker on map, user input, kiss get WeatherData, update map. updatemapfunction that centers at. unless u are using geocoder
 //Function to create map
 function initMap(lon, lat) {
     mapboxgl.accessToken = MPBX_KEY;
@@ -217,4 +223,75 @@ function initMap(lon, lat) {
         zoom: 10,
         center: [lon, lat]
     });
-}*/
+}
+
+function getMarker(lon, lat){
+    return new mapboxgl.Marker()
+        .setLngLat([lon, lat])
+        .setPopup(new mapboxgl.Popup().setHTML("How's the weather here?"))
+        .addTo(map);
+
+/*    marker.togglePopup(); // toggle popup open or closed*/
+}
+function setMapClickEvent(){
+    map.on("click",function (e){
+        console.log(e);
+        if(marker){
+            marker.remove()
+        }
+        marker = getMarker(e.lngLat.lng, e.lngLat.lat)
+        getWeatherData(e.lngLat.lat, e.lngLat.lng)
+    })
+}
+
+//getWeatherData uses a lat and long to get weather data
+    function getWeatherData(lat, lon) {
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&lang=sp&moonrise&appid=${OWM_KEY}`)
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data)
+                console.log(getCurrentWeather(data))
+                $("#weather").html(getWeatherCardContainer(data.daily))
+            })
+    }
+
+//returning weather data for only the "current" property of the weather data object
+    function getCurrentWeather(fullResponse) {
+        return fullResponse.current
+    }
+
+    function getWeatherCardContainer(dayArray) {
+        let html = "<div>"
+        for (let i = 0; i < 5; i++) {
+            html += getWeatherCard(dayArray[i])
+        }
+        html += "</div>"
+        return html
+    }
+
+//returns html template for one weather card
+//language=HTML
+    function getWeatherCard(dayObject) {
+        let date = new Date(dayObject.dt * 1000).toISOString().split("T")[0]
+        return `
+            <div class="card" style="width: 18rem;">
+
+                <img class="card-img-top" src="http://openweathermap.org/img/w/${dayObject.weather[0].icon}.png" alt="Card image cap">
+
+                <div class="card-body">
+                    <h4 class="card-title">${date}</h4>
+                    <p class="card-text">Some quick example text</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Currently</b>: ${dayObject.weather[0].main}</li>
+                    <li class="list-group-item"><b>Temp:</b> ${dayObject.temp.day + " F"}</li>
+                    <li class="list-group-item"><b>Dewpoint:</b> ${dayObject.humidity}</li>
+                    <li class="list-group-item"><b>Wind:</b>${dayObject.wind_speed + " kts @ " + dayObject.wind_deg + " degs"}</li>
+                    <li class="list-group-item"><b>Pressure:</b> ${dayObject.pressure + " bars"}</li>
+                </ul>
+<!--                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>-->
+            </div>`
+    }

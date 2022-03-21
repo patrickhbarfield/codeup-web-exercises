@@ -248,3 +248,53 @@
             }
     */-->
 
+    function getWeatherIN5Days() {
+        let weathersInEvery3Hrs = results.list;   // 5 day / 3 hour forecast data (0:00am, 3:00, 6:00, 9:00, 12:00pm, 3:00pm, 6:00pm, 9:00pm)
+
+
+        + currentWeather.wind_deg + "degs"
+
+        //append to the body - bulding a string represeentation of html to insert in doc once data comes back
+        function getFiveDayWeatherCard(currentWeather) {
+            return
+
+            let html = "";
+            html += '<ul>';
+            for (let i = 0; i < 5; i++) {
+                html += '<div>' + data.daily[i].humidity + '</div>'
+                html += '<div>' + data.daily[i].moon_phase + '</div>'
+            }
+        })
+
+        function convertWeatherTypeToImg(weatherType) {
+            if (dayObject.weather === 'clouds') {
+                weatherDisplay = `<i class="fa-solid fa-sun"></i>
+    } else if (weatherType === 'Thunderstorm') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/thunderstorm.jpeg" alt="thunderstorm over a cabin">`
+    } else if (weatherType === 'Drizzle') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/drizzle.webp" alt="rain into a man's hand">`
+    } else if (weatherType === 'Rain') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/rain.jpeg" alt="rain into a puddle">`
+    } else if (weatherType === 'Snow') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/snow.jpeg" alt="snowy cabins">`
+    } else if (weatherType === 'Fog') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/fog.jpeg" alt="foggy forest">`
+    } else if (weatherType === 'Mist') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/mist.jpeg" alt="mist">`
+    } else if (weatherType === 'Smoke') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/smoke.webp" alt="smoke">`
+    } else if (weatherType === 'Haze') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/haze.jpeg" alt="hazy woods">`
+    } else if (weatherType === 'Dust' || forecast.currentWeatherType === 'Sand') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/dust.jpeg" alt="dusty area">`
+    } else if (weatherType === 'Ash') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/ash.jpeg" alt="volcanic ash">`
+    } else if (weatherType === 'Squall') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/squall.jpeg" alt="squall">`
+    } else if (weatherType === 'Tornado') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/tornado.webp" alt="tornado">`
+    } else if (weatherType === 'Clouds') {
+        weatherDisplay = `<img class="weather-pic mx-auto" src="/pictures_and_stuff/clouds.jpeg" alt="clouds">`
+    }
+}
+*/
