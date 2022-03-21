@@ -1,5 +1,15 @@
+#locationName {
+    width: 50%
+}
 
-.fancy-header {
-    color: blue;
-    text-decoration: underline;
+/*.geocoder {
+    width:
+}*/
+.weather-logo{
+    width: 10rem;
+    height:10rem;
+}
+
+.cardTypeThing {
+    height: 20%
 }
