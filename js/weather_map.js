@@ -244,6 +244,23 @@ function setMapClickEvent(){
     })
 }
 
+$("#changeLocation").click(function(){
+    console.log('Change Location Mapbox Clicked')
+    geocode($("#newLocation").val(), MAP_key).then(function(result){
+        map.setCenter(result);
+        map.setZoom(10);
+        currentLocation.pop();
+        currentLocation.pop();
+        currentLocation.unshift(result[1]);
+        currentLocation.unshift(result[0]);
+        lat = currentLocation[1];
+        lon = currentLocation[0];
+        marker=createMarker({lat, lon});
+        $('#forecast').html("");
+        $('#locationName').html("");
+        getData(lat, lon);
+    })
+});
 //getWeatherData uses a lat and long to get weather data
     function getWeatherData(lat, lon) {
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&lang=sp&moonrise&appid=${OWM_KEY}`)

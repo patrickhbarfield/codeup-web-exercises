@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>NOAA NEXRAD</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<style>
+    .mapboxgl-popup {
+        max-width: 400px;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+</style>
+<div id='map'></div>
+<div id='menu'>
+    <ui>
+        <li>
+            <a href="javascript:void(0);" data-layername="layer1"  id="N0R" class="active">Reflectivity</a>
+            <a href="javascript:void(0);" data-layername="layer2"  id="N1P" class="">1 Hour Precipitation</a>
+            <a href="javascript:void(0);" data-layername="layer3"  id="NTP" class="">Storm Total Precipitation</a>
+            <a href="javascript:void(0);" data-layername="layer4"  id="N0V" class="">Velocity</a>
+            <a href="javascript:void(0);" data-layername="layer5"  id="N0S" class="">Storm Relative Motion</a>
+            <a href="javascript:void(0);" data-layername="layer6"  id="N0Z" class="">Long Range Reflectivity</a>
+        </li>
+    </ui>
+
+
+</div>
+<div id='menu2'>
+
+    <div class="text-block">Radar Images</div>
+    <ui class='source-layer'>
+        <li id='source-layer-listing'>
+        </li>
+    </ui>
+</div>
+<script>
+    var radarType="N0R";
+    function showJustLayer(layername){
+        $('#menu li a').each(function(){
+            if ($(this).data('layername')==layername){
+                $(this).addClass('active');
+            }
+            else{
+                $(this).removeClass('active');
+            }
+        });
+    }
+    $(document).ready(function(){
+        $('#menu li a').click(function(){
+            var layerName=$(this).data('layername');
+            radarType=$(this).attr('id');
+            showJustLayer(layerName);
+        });
+    });
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2x5IiwiYSI6IjdiYzFmZmY5NTExOTQ0MTExMGVhZDBkZTIwMmRlYjJhIn0.hOz2brurCBMGWGU5EI-waQ';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'https://dl.dropboxusercontent.com/s/j5ohy94t92ati4y/light_base_01.json?dl=1?raw=1',
+        zoom: 3.35,
+        center: [-95.74, 39],
+        hash: true
+    });
+
+    map.on('load', function () {
+        map.addSource("noaa", {
+            "type": "vector",
+            "url": "mapbox://sly.0unpeefi"
+
+        });
+        map.addSource("noaa_sta", {
+            "type": "vector",
+            "url": "mapbox://sly.99iuuzcw"
+
+        });
+
+        map.addLayer({
+            "id": "noaa_dots",
+            "type": "circle",
+            "source": "noaa_sta",
+            "source-layer": "Weather_Radar_Stations-14wxnv",
+            "layout": {
+            },
+            "paint": {
+                "circle-color": "rgba(173, 104, 206, 1)",
+                "circle-stroke-width": 1,
+                "circle-radius": { "stops": [[3,3],[15,30]] }
+            },
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "radarType",
+                    "TDWR"
+                ]
+            ]
+        });
+        map.addLayer({
+            "id": "noaa_sta-labels",
+            "type": "symbol",
+            "source": "noaa_sta",
+            "source-layer": "Weather_Radar_Stations-14wxnv",
+            "layout": {
+                "text-field": "{siteID}",
+                "text-size": 11,
+                "text-justify": "left",
+                "text-anchor": "left",
+                "text-offset": [
+                    0.5,
+                    0
+                ],
+                "text-font": [
+                    "Open Sans Semibold",
+                    "Arial Unicode MS Regular"
+                ]
+            },
+            "paint": {
+                "text-halo-color": "rgba(193, 134, 226, 1)",
+                "text-halo-width": 2
+            },
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "radarType",
+                    "TDWR"
+                ]
+            ]
+        });
+
+        map.addLayer({
+            "id": "noaa-areas",
+            "type": "fill",
+            "source": "noaa",
+            "source-layer": "service_areas_dissolved-0ph7cn",
+
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(255,0,0,0.1)",
+                "fill-outline-color":"black"
+            }
+        },'aeroway-taxiway-casing');
+        map.addLayer({
+            "id": "noaa-border",
+            "type": "line",
+            "source": "noaa",
+            "source-layer": "service_areas_dissolved-0ph7cn",
+
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "rgba(255,0,0,0.1)",
+                "line-width":2
+            }
+        },'aeroway-taxiway-casing');
+        // When a click event occurs on a feature in the states layer, open a popup at the
+        // location of the click, with description HTML from its properties.
+        map.on('click', 'noaa_dots', function (e) {
+            $(document).ready(function(){
+                $('.mapboxgl-popup').remove();
+            });
+
+            // new mapboxgl.Popup()
+            //     .setLngLat(e.lngLat)
+            //     .setHTML(e.features[0].properties.siteID)
+            //     .addTo(map);
+            var sta = e.features[0].properties.siteID;
+            sta=sta.substr(1);
+            getBounds(sta);
+            console.log('points ='+points);
+
+
+        });
+
+        // Change the cursor to a pointer when the mouse is over the states layer.
+        map.on('mouseenter', 'noaa_dots', function () {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'noaa_dots', function () {
+            map.getCanvas().style.cursor = '';
+        });
+    });
+
+    function layerExists(layername){
+        var layerexists=false;
+        for (var i = 0; i < map.getStyle().layers.length; i++) {
+            var clickedLayer= map.getStyle().layers[i].id;
+            (clickedLayer==layername) ? (layerexists=true) : undefined;
+        }
+        return layerexists;
+    }
+
+    function getBounds(sta){
+        //https://cors-anywhere.herokuapp.com/
+        $.get('https://cors-anywhere.herokuapp.com/https://radar.weather.gov/ridge/RadarImg/'+radarType+'/'+sta+'_'+radarType+'_0.gfw', function(data) {
+
+            var lines = data.split("\n");
+            console.log('get gfw');
+            for (var i = 0; i <lines.length; i++) {
+                console.log(lines[i]+' lines '+i);
+                switch(i) {
+                    case 0:
+                        A= parseFloat(lines[i]);
+                        console.log('A');
+                        break;
+                    case 1:
+                        D=parseFloat(lines[i]);
+                        console.log('D');
+                        break;
+                    case 2:
+                        B=parseFloat(lines[i]);
+                        break;
+                    case 3:
+                        E=parseFloat(lines[i]);
+                        break;
+                    case 4:
+                        C=parseFloat(lines[i]);
+                        break;
+                    case 5:
+                        F=parseFloat(lines[i]);
+                        break;
+                    default:
+                        console.log('default');
+                }
+
+            }
+            console.log(A,B,C,D,E,F);
+            var xmax =xtransform(600,0);
+            var ymin= ytransform(0,550);
+            var xmin = xtransform(0,0);
+            var ymax= ytransform(0,0);
+            var points =[xmin,ymin,xmax,ymax];
+            console.log('points');
+            console.log(points);
+            var radarReq = sta+'_'+radarType;
+            (layerExists(radarReq)==false)?(addGIF(points,sta)):undefined;
+            return;
+        });
+    }
+
+    function xtransform(x,y){
+        var x1 = A*x + B*y+ C;
+        return x1;
+    }
+
+    function ytransform(x,y){
+        var y1 = D*x + E*y + F;
+        return y1;
+    }
+
+    function addGIF(points,sta){
+        var xmin=points[0];
+        var ymin=points[1] ;
+        var xmax=points[2];
+        var ymax=points[3];
+        map.addSource('radar'+sta+'_'+radarType, {
+            'type': 'image',
+            'url': 'https://cors-anywhere.herokuapp.com/https://radar.weather.gov/ridge/RadarImg/'+radarType+'/'+sta+'_'+radarType+'_0.gif',
+            "coordinates": [
+                [xmin, ymax],
+                [xmax, ymax],
+                [xmax, ymin],
+                [xmin, ymin]
+            ]
+        });
+        map.addLayer({
+            'id': sta+'_'+radarType,
+            'type': 'raster',
+            'source': 'radar'+sta+'_'+radarType,
+            'paint': { 'raster-opacity': 1,
+                'raster-opacity-transition': {
+                    duration: 0
+                }}
+        }, 'aeroway-taxiway');
+        var listingSLl = document.getElementById('source-layer-listing');
+        var item = document.createElement('a');
+        item.textContent =sta+'_'+radarType;
+        item.id =sta+'_'+radarType;
+        item.style.zIndex=100;
+        item.style.position='relative';
+        item.target ='#';
+        item.onclick=clickFunction;
+        item.href = 'javascript:void(0);';
+        item.className='active';
+        listingSLl.appendChild(item);
+    }
+
+    function clickFunction (){
+        console.log('click function');
+        if (!$(this).hasClass('active')){
+            $(this).addClass('active');}
+        else{
+            $(this).removeClass('active');
+        }
+        var listingEl = document.getElementById('source-layer-listing');
+        for (var i = 0; i < map.getStyle().layers.length; i++) {
+            var clickedLayer= map.getStyle().layers[i].id;
+            var layerName = $(this).text();
+            if (clickedLayer==layerName){
+                var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+                if (visibility === 'visible') {
+                    map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+
+                }
+                else {
+                    map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                }
+
+            }
+        }
+    }
+</script>
+<head>
+    <style>
+        #menu {
+            position: relative;
+            background: #fff;
+            padding: 0px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        #menu2 {
+            position: absolute;
+            top:50%;
+            height:50%;
+            left:0px;
+            background: #eee;
+        }
+        input {
+            z-index:101;
+            position:absolute;
+        }
+        input#show:checked ~ ui {
+            display:block;
+            z-index:100;
+            position: absolute
+        }
+        input#hide:checked ~ ui {
+            display:none;
+            z-index:100;
+            position: absolute
+        }
+        ui {
+            position:absolute;
+            top:0px;left:0px;
+            list-style:none;
+            margin:0;padding:0;
+            z-index:100;
+        }
+        li {
+            overflow:scroll;
+            height:50%;
+            width: 150px;
+        }
+        ui a {
+            font:normal 13px/18px 'Helvetica Neue',Helvetica,sans-serif;
+            background:#FFF;
+            color:#3C4E5A;
+            display:block;
+            margin:0;padding:0;
+            border:1px solid #BBB;
+            border-bottom-width:0;
+            min-width:100px;
+            padding:4px;
+            text-decoration:none;
+        }
+        ui a:hover { background:#ECF5FA; }
+        ui li:last-child a {
+            border-bottom-width:1px;
+            -webkit-border-radius:0 0 3px 3px;
+            border-radius:0 0 3px 3px;
+        }
+        ui li:first-child a {
+            -webkit-border-radius:3px 3px 0 0;
+            border-radius:3px 3px 0 0;
+        }
+        ui a.active {
+            background:#3887BE;
+            border-color:#3887BE;
+            border-top-color:#FFF;
+            color:#FFF;
+        }
+        li #source-layer-listing{
+            position:absolute;
+            top:0px;left:0px;
+            list-style:none;
+            margin:0;padding:0;
+            z-index:101;
+            overflow: auto;
+            height:100%;
+            width: 150px;
+        }
+
+        ui.source-layer{
+            position:absolute;
+            margin-top:3px;
+            top:0px;left:0px;
+
+            list-style:none;
+            z-index:101;
+            overflow: auto;
+            height:85%;
+            width: 150px;
+            display: block;
+            list-style-type: none;
+        }
+
+        .text-block {
+            display: inline-block;
+            font-size: 13px;
+            /*new:*/
+            font-family: 'Times New Roman';
+            line-height: 15PX;
+            height: 15px;
+            margin-top: 2px;
+            padding: 0;
+            border: 1px solid black;
+            position: relative;
+            left: 0px;
+            top:-15px;
+            background-color: white;
+            color: black;
+            z-index:103;
+            vertical-align:center;
+        }
+    </style>
+</head>
+</body>
+</html>
