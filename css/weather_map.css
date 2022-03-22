@@ -9,8 +9,10 @@
 }
 
 #map {
+    margin-right: 15px;
 padding: 15px 15px;
-    width: 85%;
+    center: auto;
+    width: 100%;
     height: 500px;
 }
 
@@ -21,7 +23,6 @@ padding: 15px 15px;
     border: 1px solid #cbbcb1;
     box-shadow: .1em .1em 1em rgba(203,188,177, 1);
 }*/
-
 
 .card {
     display: flex;
@@ -50,6 +51,12 @@ padding: 15px 15px;
     height: 5rem;
     padding-bottom: 15px;*/
 }
+.weather{
+    margin-right: 15px;
+    margin-left: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
 
 .weather-logo{
     width: 10rem;
@@ -59,3 +66,91 @@ padding: 15px 15px;
 .cardTypeThing {
     height: 20%
 }
+/*
+!*WIREFRAMES ACCORDING TO THE DEVICE SCREEN SIZE (XS, SM, MD, LG, XL)*!
+!*X-Small devices (portrait phones, less than 576px)*!
+!*No media query for `xs` as we are taking the mobile-first approach*!
+!*SCREEN SPECIFICATIONS*!
+@media only screen and  (max-width:730px){
+
+    .container{
+        padding: 20px;
+    }
+
+    .future-forecast{
+        justify-content: start;
+        align-items: none;
+        overflow-y: scroll;
+    }
+
+    .future-forecast .today .temp{
+        font-size: 16px;
+    }
+
+    .date-container .time{
+        font-size: 50px;
+    }
+
+    .date-container #am-pm{
+        font-size: 20px;
+    }
+
+    .date-container .date{
+        font-size: 20px;
+    }
+
+    .place-container{
+        text-align: end;
+        margin-top: 15px;
+    }
+
+    .place-container .time-zone{
+        font-size: 20px;
+    }
+
+    .current-info .others{
+        padding: 12px;
+    }
+
+    .current-info .others .weather-item{
+        font-size: 14px;
+    }
+    #map {
+        display: none !important;
+    }
+
+}
+
+@media only screen and (max-width: 1400px){
+    .future-forecast{
+        justify-content: start;
+        align-items: none;
+        overflow-x: scroll;
+    }
+}
+!*Small devices (landscape phones, 576px and up)*!
+@media (min-width: 576px) {
+    .extra-small-logo-only {
+        display: none;
+    }
+}
+
+!*Medium devices (tablets, 768px and up)*!
+@media (min-width: 768px) {
+
+}
+
+!*Large devices (desktops, 992px and up)*!
+@media (min-width: 992px) {
+}
+
+!*X-Large devices (large desktops, 1200px and up)*!
+@media (min-width: 1200px) {
+    .container {
+        width: 1440px;
+    }
+}
+
+!*XX-Large devices (larger desktops, 1400px and up) - DON'T NEED
+@media (min-width: 1400px) {
+}*/

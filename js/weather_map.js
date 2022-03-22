@@ -80,7 +80,8 @@ $("#changeLocation").click(function(e){
     }
 
     function getWeatherCardContainer(dayArray) {
-        let html = "<div class='d-flex'>"
+        let html = "<div class= 'd-flex' style='margin-outside: 15 px'>"
+        //put div in row and set columns for 2
         for (let i = 0; i < 5; i++) {
             html += getWeatherCard(dayArray[i])
         }
@@ -88,14 +89,13 @@ $("#changeLocation").click(function(e){
         return html
     }
 
-//returns html template for one weather card
 //language=HTML
     function getWeatherCard(dayObject) {
         let date = new Date(dayObject.dt * 1000).toISOString().split("T")[0]
         return `
             <div class="card" style="width: 15rem;">
 
-                <img class="card-img-top" src="http://openweathermap.org/img/w/${dayObject.weather[0].icon}.png" alt="Card image cap">
+                <img class="card-img-top" src="http://openweathermap.org/img/w/${dayObject.weather[0].icon}.png" alt="Icon reflects the weather">
 
                 <div class="card-body">
                     <h4 class="card-title">${date}</h4>

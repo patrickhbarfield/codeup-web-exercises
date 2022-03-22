@@ -23,18 +23,19 @@
 </head>
 
 <body>
-<div class="container">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container-fluid p-0">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style = "width:auto">
 
-        <span class="navbar-brand mb-0 h1 d-flex">Weather Map</span>
+        <span class="navbar-brand mb-0 h1 d-flex" style="padding-left: 15px">Weather Map</span>
         <div class="navbar-toggler, d-flex">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon d-flex"></span>
+                <span class="navbar-toggler-icon" ></span>
             </button>
 
             <div class="text-light d-lg-none dark-mode pl-3">
-                <i class="fa fa-sun-o"></i> <i class="glyphicon">&#x2601;</i>
+
+
             </div>
         </div>
 
@@ -50,7 +51,7 @@
         </div>
 
         <div class="text-light d-none d-lg-block ml-auto dark-mode">
-            <i class="fa fa-sun-o"></i>/<i class="fa fa-moon-o"></i>
+            <i class="fa fa-sun-o"></i> <i class="glyphicon" style="padding-right:15px">&#x2601</i>
         </div>
 </nav>
 
@@ -81,7 +82,7 @@
         <input class="mb-2" type="text" id="newLocation" placeholder="Enter Place...">
         <button class="mb-2" id="changeLocation">Search Location</button>
     </div>
-
+    <br>
 </section>
 </div>
 <div id="weather"></div>
