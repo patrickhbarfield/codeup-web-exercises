@@ -1,8 +1,9 @@
-(function() {
+(function () {
     "use strict";
 
     ///**
     // * TODO:
+    names[]
     //  * Create an array of 4 people's names and store it in a variable called
     //  * 'names'.
     //  */
@@ -41,16 +42,15 @@
         console.log('The name at index ' + i + ' is: ' + names[i]);
     }
 
-    names.forEach(function (names)
+    names.forEach(function (names) {
 
-    console.log('Here is a lovely name: ' + name + '.'))
-}
+        console.log('Here is a lovely name: ' + name + '.')
 
+        function first(anArray) {
+            return anArray[0];
+        }
 
-function first(anArray) {
-    return anArray[0];
-}
-{
-console.log(first([1,2,3,4,5]));
-console.log(first(names));
+        console.log(first([1, 2, 3, 4, 5]));
+        console.log(first(names));
+    })
 }
